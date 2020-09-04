@@ -123,6 +123,10 @@
     loop: "{{ homebrew_cask_apps }}"
     notify:
       - Clear homebrew cache
+    register: result
+    retries: 3
+    delay: 5
+    until: result is not failed
 
   # Brew.
   - include_tasks: load-packages-list.yml
