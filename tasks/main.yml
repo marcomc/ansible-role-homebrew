@@ -121,12 +121,12 @@
       install_options: "{{ item.install_options | default('appdir=' + homebrew_cask_appdir) }}"
       accept_external_apps: "{{ homebrew_cask_accept_external_apps }}"
     loop: "{{ homebrew_cask_apps }}"
-    notify:
-      - Clear homebrew cache
-    register: result
+    register: cask_result
     retries: 3
     delay: 5
-    until: result is not failed
+    until: cask_result is not failed
+    notify:
+      - Clear homebrew cache
 
   # Brew.
   - include_tasks: load-packages-list.yml
@@ -142,6 +142,10 @@
       install_options: "{{ item.install_options | default(omit) }}"
       state: present
     loop: "{{ homebrew_installed_packages }}"
+    register: result
+    retries: 3
+    delay: 5
+    until: result is not failed
     notify:
       - Clear homebrew cache
 
