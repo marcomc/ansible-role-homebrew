@@ -97,7 +97,7 @@ The list of casks contained in the list file will be merged without duplicates t
       - firefox
       - { name: virtualbox, install_options:"debug,appdir=/Applications" }
 
-Apps you would like to have installed via `cask`. [Search][caskroom] for popular apps to see if they're available for install via Cask. Cask will not be used if it is not included in the list of taps in the `homebrew_taps` variable. You can optionally add flags to the install by setting an `install_options` property, and if used, you need to explicitly set the `name` for the package as well. By default, no Cask apps will be installed (`homebrew_cask_apps: []`).
+Apps you would like to have installed via `cask`. [Search][caskroom] for popular apps to see if they're available for install via Cask. Cask will not be used if it is not included in the list of taps in the `homebrew_taps` variable. You can optionally add flags to the install by setting an `install_options` property, and if used, you need to explicitly set the `name` for the package as well. By default, no Casks will be installed (`homebrew_cask_apps: []`).
 
     homebrew_cask_accept_external_apps: true
 

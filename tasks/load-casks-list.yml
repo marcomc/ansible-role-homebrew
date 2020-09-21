@@ -6,12 +6,12 @@
   check_mode: no
 
 - block:
-  - name: Add casks from '{{ homebrew_cask_apps_list_file }}' to the list of desired Cask apps.
+  - name: Add casks from '{{ homebrew_cask_apps_list_file }}' to the list of desired Casks.
     set_fact:
       homebrew_cask_apps: "{{ homebrew_cask_apps |default([]) }} + [ '{{ item }}' ]"
     with_lines: cat {{ homebrew_cask_apps_list_file }}
 
-  - name: Remove duplicates of desired Cask apps.
+  - name: Remove duplicates of desired Casks.
     set_fact:
       homebrew_cask_apps: "{{ homebrew_cask_apps | unique | list }}"
   when: cask_apps_list_file.stat.exists
